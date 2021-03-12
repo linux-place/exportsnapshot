@@ -28,10 +28,10 @@ variable "function_name" {
   
 }
 
-variable "aws_region" {
-  type    = string
-  default = "us-east-1"
-}
+# variable "aws_region" {
+#   type    = string
+#   default = "us-east-1"
+# }
 
 variable "environment_variables" {
   default     = {}
