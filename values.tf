@@ -38,3 +38,8 @@ variable "environment_variables" {
   description = "Variables"
   type        = map(string)
 }
+
+variable "tags" {
+  type    = map
+  default = {}
+}
