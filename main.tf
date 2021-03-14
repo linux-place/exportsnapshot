@@ -1,6 +1,6 @@
-provider "aws" {
-  region = var.aws_region
-}
+# provider "aws" {
+#   region = var.aws_region
+# }
 
 locals {
   environment = merge({ S3_BUCKET = var.export_bucket,
