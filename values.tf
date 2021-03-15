@@ -18,6 +18,11 @@ variable "tables" {
   default = ""
 }
 
+variable "force_last" {
+  type  = string
+  default = "No"
+}
+
 variable "schedule_expression" {
   type = string
   
