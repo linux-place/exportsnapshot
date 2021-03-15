@@ -46,7 +46,7 @@ module "lambda_function" {
   runtime       = "python3.8"
   publish       = true
 
-  source_path = "src/export_snap_s3"
+  source_path = "${path.module}/src/export_snap_s3"
 
   # layers = [
   #   module.lambda_layer_boto3.this_lambda_layer_arn,
