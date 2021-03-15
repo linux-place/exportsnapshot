@@ -84,4 +84,4 @@ def instantiate_s3_export(event, context):
             
         return(json.dumps(response, default=jsondatetimeconverter))
     else:
-        return("Not invoking start export task as the backup its not the latest backup.")
+        return(f"Not invoking start export task as the backup its not the latest backup.\n{get_latest_snapshot_time.date()} {datetime.today().date()}")
