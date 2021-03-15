@@ -8,7 +8,8 @@ locals {
     IAM_ROLE      = var.iam_role,
     KMS_KEY       = var.kms_key,
     EXPORT_ID     = var.export_id,
-    TABLE_LIST    = var.tables
+    TABLE_LIST    = var.tables,
+    FORCE_LAST    = var.force_last
     },
   var.environment_variables)
 }
