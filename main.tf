@@ -48,9 +48,9 @@ module "lambda_function" {
 
   source_path = "src/export_snap_s3"
 
-  layers = [
-    module.lambda_layer_boto3.this_lambda_layer_arn,
-  ]
+  # layers = [
+  #   module.lambda_layer_boto3.this_lambda_layer_arn,
+  # ]
 
   environment_variables = local.environment
 
@@ -131,15 +131,15 @@ EOF
   }
 }
 
-module "lambda_layer_boto3" {
-  source = "terraform-aws-modules/lambda/aws"
+# module "lambda_layer_boto3" {
+#   source = "terraform-aws-modules/lambda/aws"
 
-  create_layer = true
+#   create_layer = true
 
-  layer_name          = "boto3"
-  description         = "boto3"
-  compatible_runtimes = ["python3.8"]
+#   layer_name          = "boto3"
+#   description         = "boto3"
+#   compatible_runtimes = ["python3.8"]
 
-  source_path = "layers/python"
+#   source_path = "layers/python"
 
-}
+# }
