@@ -43,6 +43,7 @@ def instantiate_s3_export(event, context):
     s3_bucket = os.environ["S3_BUCKET"]
     iam_role = os.environ["IAM_ROLE"]
     kms_key = os.environ["KMS_KEY"]
+    force_last = os.environ["FORCE_LAST"]
     export_identifier = os.environ["EXPORT_ID"]
     if "S3_PREFIX" in os.environ:
         s3_prefix = os.environ["S3_PREFIX"]
@@ -58,7 +59,7 @@ def instantiate_s3_export(event, context):
         
     get_latest_snapshot_name,get_latest_snapshot_time  = get_db_snapshot()
     print ("Snapshot: {}\n Now: {}".format(get_latest_snapshot_time.date(),datetime.today().date() ))
-    if get_latest_snapshot_time.date() == datetime.today().date():
+    if (get_latest_snapshot_time.date() == datetime.today().date() ) or force_last == "YES":
         today_date = datetime.today().strftime("%Y-%m-%d")
         export_task = export_identifier+"-"+today_date
         
@@ -84,4 +85,4 @@ def instantiate_s3_export(event, context):
             
         return(json.dumps(response, default=jsondatetimeconverter))
     else:
-        return(f"Not invoking start export task as the backup its not the latest backup.\nSnap: {get_latest_snapshot_time.date()}\nDate: {datetime.today().date()}")
+        return(f"Not invoking start export task as the backup its not the latest backup")
